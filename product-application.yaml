@@ -1,0 +1,27 @@
+server:
+  port: 8083
+
+logging:
+  level:
+    root: INFO
+    com.brillianceinfotech: DEBUG
+
+spring:
+  application:
+    name: PRODUCT-SERVICE  # If you want to set the application name (uncomment the line)
+    config:
+      import: configserver:http://localhost:9296
+  datasource:
+    url: jdbc:mariadb://localhost:3307/dev1
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info
