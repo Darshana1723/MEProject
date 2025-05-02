@@ -1,0 +1,31 @@
+server:
+  port: 8082
+
+logging:
+  level:
+    root: INFO
+    com.brillianceinfotech: DEBUG
+
+spring:
+  application:
+    name: CUSTOMER-SERVICE  # Uncomment this line if needed
+  config:
+      import: configserver:http://localhost:9296
+  datasource:
+    url: jdbc:mariadb://localhost:3307/dev1
+    #url: jdbc:mariadb://brilliance.cr8uc6wiayxk.ap-south-1.rds.amazonaws.com:3306/brilliance  # Uncomment this line for AWS
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+management:
+  endpoints:
+      web:
+        exposure:
+          include: info
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
